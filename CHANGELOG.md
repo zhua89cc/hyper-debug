@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.1.2 - 2024-10-20
+
+### Added
+- Add support for Solspace Calendar Event links.
+
+### Changed
+- Custom Attributes can now override all default link attributes.
+
+### Fixed
+- Fix Hyper element links not being propagated correctly when adding new sites.
+- Fix `rel` attribute not working correctly.
+- Fix toggling “New Window” not persisting.
+
 ## 2.1.1 - 2024-10-10
 
 ### Fixed
