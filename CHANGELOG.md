@@ -102,6 +102,14 @@
 ### Removed
 - Remove migrations for other plugin (not supported in Craft 5).
 
+## 1.3.3 - 2024-10-20
+
+### Added
+- Add support for Solspace Calendar Event links.
+
+### Fixed
+- Fix Hyper element links not being propagated correctly when adding new sites.
+
 ## 1.3.2 - 2024-10-09
 
 ### Added
