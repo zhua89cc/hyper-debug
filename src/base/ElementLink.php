@@ -40,6 +40,7 @@ abstract class ElementLink extends Link implements ElementLinkInterface
     public ?int $linkSiteId = null;
     public string|array|null $sources = '*';
     public ?string $selectionLabel = null;
+    public bool $showSiteMenu = true;
 
     private ?ElementInterface $_element = null;
     private ?ElementInterface $_elementCache = null;
@@ -84,6 +85,7 @@ abstract class ElementLink extends Link implements ElementLinkInterface
         $values = parent::getSettingsConfig();
         $values['sources'] = $this->sources;
         $values['selectionLabel'] = $this->selectionLabel;
+        $values['showSiteMenu'] = $this->showSiteMenu;
 
         return $values;
     }

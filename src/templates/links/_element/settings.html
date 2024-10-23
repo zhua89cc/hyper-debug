@@ -17,5 +17,15 @@
     name: 'selectionLabel',
     value: linkType.selectionLabel,
     placeholder: linkType.defaultSelectionLabel(),
-    errors: linkType.getErrors('selectionLabel')
+    errors: linkType.getErrors('selectionLabel'),
 }) }}
+
+{% if craft.app.getIsMultiSite() %}
+    {{ forms.lightswitchField({
+        label: 'Show Site Menu' | t('hyper'),
+        instructions: 'Whether to show the Site menu when selecting elements.' | t('hyper'),
+        name: 'showSiteMenu',
+        on: linkType.showSiteMenu,
+        errors: linkType.getErrors('showSiteMenu'),
+    }) }}
+{% endif %}
