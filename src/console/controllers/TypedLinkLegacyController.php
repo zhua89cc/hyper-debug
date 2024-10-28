@@ -63,8 +63,6 @@ class TypedLinkLegacyController extends Controller
             $settings['typeSettings'] = [];
         }
 
-        $settings['enableAllLinkTypes'] = false;
-
         if (isset($settings['allowedLinkNames'])) {
             $allowedLinkNames = $settings['allowedLinkNames'];
             
