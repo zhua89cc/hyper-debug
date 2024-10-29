@@ -51,10 +51,11 @@ class PluginContentMigration extends PluginMigration
             $this->stdout("Field ID Using to Query “{$fieldData['id']}” ");
 
             $this->stdout("Field Instance “{$field}” ");
-            $this->stdout("Column is  “{$column}” ");
 
             if ($field) {
                 $column = ElementHelper::fieldColumn($field->columnPrefix, $field->handle, $field->columnSuffix);
+                $this->stdout("Column is  “{$column}” ");
+
                 $this->stdout("Field Context “{$field->context}” ");
 
 
@@ -68,6 +69,8 @@ class PluginContentMigration extends PluginMigration
                         ->where(['not', [$column => null]])
                         ->andWhere(['not', [$column => '']])
                         ->all();
+
+                    $this->stdout("Content is “{$content}” ");
 
                     foreach ($content as $row) {
                         $settings = $this->convertModel($field, Json::decode($row[$column]));
@@ -98,6 +101,9 @@ class PluginContentMigration extends PluginMigration
                         ->from('{{%matrixblocktypes}}')
                         ->where(['uid' => $blockTypeUid])
                         ->one();
+
+                    $this->stdout("Matrix Content is “{$matrixInfo}” ");
+
 
                     if ($matrixInfo) {
                         $matrixFieldId = $matrixInfo['fieldId'];
