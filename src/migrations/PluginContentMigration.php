@@ -114,6 +114,8 @@ class PluginContentMigration extends PluginMigration
                         $matrixBlockTypeHandle = $matrixInfo['handle'];
 
                         $matrixField = Craft::$app->getFields()->getFieldById($matrixFieldId);
+                        $this->stdout("We have Matrix Info Below");
+                        echo json_encode($matrixField, JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT);
 
                         if ($matrixField && $matrixField instanceof Matrix) {
                             $column = ElementHelper::fieldColumn($field->columnPrefix, $matrixBlockTypeHandle . '_' . $field->handle, $field->columnSuffix);
@@ -124,6 +126,10 @@ class PluginContentMigration extends PluginMigration
                                 ->where(['not', [$column => null]])
                                 ->andWhere(['not', [$column => '']])
                                 ->all();
+                            $this->stdout("We have Matrix Content Below");
+
+                            echo json_encode($content, JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT);
+
 
                             foreach ($content as $row) {
                                 $settings = $this->convertModel($field, Json::decode($row[$column]));
