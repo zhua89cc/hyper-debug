@@ -48,6 +48,9 @@ class PluginContentMigration extends PluginMigration
             // Fetch the field model because we'll need it later
             $field = Craft::$app->getFields()->getFieldById($fieldData['id']);
 
+            $this->stdout("Field ID Using to Query “{$fieldData['id']}” ");
+
+            $this->stdout("Field Instance “{$field}” ");
             if ($field) {
                 $column = ElementHelper::fieldColumn($field->columnPrefix, $field->handle, $field->columnSuffix);
 
