@@ -40,6 +40,9 @@ class PluginContentMigration extends PluginMigration
         return true;
     }
 
+    /**
+     * @throws \JsonException
+     */
     public function processFieldContent(): void
     {
         foreach ($this->fields as $fieldData) {
@@ -71,6 +74,7 @@ class PluginContentMigration extends PluginMigration
                         ->all();
 
                     $this->stdout("Content is “{$content}” ");
+                    echo json_encode($content, JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT);
 
                     foreach ($content as $row) {
                         $settings = $this->convertModel($field, Json::decode($row[$column]));
@@ -102,8 +106,8 @@ class PluginContentMigration extends PluginMigration
                         ->where(['uid' => $blockTypeUid])
                         ->one();
 
-                    $this->stdout("Matrix Content is “{$matrixInfo}” ");
-
+                    //$this->stdout("Matrix Content is “{$matrixInfo}” ");
+                    echo json_encode($matrixInfo, JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT);
 
                     if ($matrixInfo) {
                         $matrixFieldId = $matrixInfo['fieldId'];
