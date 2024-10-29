@@ -73,7 +73,6 @@ class PluginContentMigration extends PluginMigration
                         ->andWhere(['not', [$column => '']])
                         ->all();
 
-                    $this->stdout("Content is “{$content}” ");
                     echo json_encode($content, JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT);
 
                     foreach ($content as $row) {
