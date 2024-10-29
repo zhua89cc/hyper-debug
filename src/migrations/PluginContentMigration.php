@@ -51,11 +51,17 @@ class PluginContentMigration extends PluginMigration
             $this->stdout("Field ID Using to Query “{$fieldData['id']}” ");
 
             $this->stdout("Field Instance “{$field}” ");
+            $this->stdout("Column is  “{$column}” ");
+
             if ($field) {
                 $column = ElementHelper::fieldColumn($field->columnPrefix, $field->handle, $field->columnSuffix);
+                $this->stdout("Field Context “{$field->context}” ");
+
 
                 // Handle global field content
                 if ($field->context === 'global') {
+                    $this->stdout("Field is Global");
+
                     $content = (new Query())
                         ->select([$column, 'id', 'elementId'])
                         ->from('{{%content}}')
@@ -81,6 +87,9 @@ class PluginContentMigration extends PluginMigration
 
                 // Handle Matrix field content
                 if (str_contains($field->context, 'matrixBlockType')) {
+
+                    $this->stdout("Field is Matrix");
+
                     // Get the Matrix field, and the content table
                     $blockTypeUid = explode(':', $field->context)[1];
 
@@ -128,6 +137,7 @@ class PluginContentMigration extends PluginMigration
                 if (str_contains($field->context, 'superTableBlockType')) {
                     // Get the Super Table field, and the content table
                     $blockTypeUid = explode(':', $field->context)[1];
+                    $this->stdout("Field is Supertable");
 
                     $superTableFieldId = (new Query())
                         ->select(['fieldId'])
