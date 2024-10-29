@@ -45,6 +45,9 @@ class PluginContentMigration extends PluginMigration
      */
     public function processFieldContent(): void
     {
+
+        $this->stdout('RUNNING BASE MIGRATION CONTENT');
+
         foreach ($this->fields as $fieldData) {
             $this->stdout("Preparing to migrate field “{$fieldData['handle']}” ({$fieldData['uid']}) content.");
 

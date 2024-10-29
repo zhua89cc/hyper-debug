@@ -47,6 +47,8 @@ class MigrateTypedLinkContent extends PluginContentMigration
 
     public function processFieldContent(): void
     {
+        $this->stdout('RUNNING TYPEDLINKCONTENT MIGRATION');
+
         foreach ($this->fields as $fieldData) {
             $this->stdout("Preparing to migrate field “{$fieldData['handle']}” ({$fieldData['uid']}) content.");
 
