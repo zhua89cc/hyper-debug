@@ -70,6 +70,9 @@ class MigrationsController extends Controller
 
         $response = [];
 
+        $this->stdout('Running migration in Migrations Controller: ' . $migrationClass . PHP_EOL);
+
+
         $migration = new $migrationClass();
 
         try {

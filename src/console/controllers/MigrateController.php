@@ -105,6 +105,8 @@ class MigrateController extends Controller
 
         $response = [];
 
+        $this->stdout('Running CONSOLE migration: ' . $migrationClass . PHP_EOL);
+
         $migration = new $migrationClass();
         $migration->setConsoleRequest($this);
         $migration->up();
